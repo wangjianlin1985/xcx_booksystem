@@ -6,6 +6,7 @@ api接口采用技术： SSM框架（SpringMVC + Spring + Mybatis）
 客户端开发工具：微信开发者工具
 
 基于微信小程序图书管理app技术要点：
+
 1 此系统web端接口采用java语言和ssm框架实现
 
 2 客户端和服务器通信数据，采用封装好的json数据格式
