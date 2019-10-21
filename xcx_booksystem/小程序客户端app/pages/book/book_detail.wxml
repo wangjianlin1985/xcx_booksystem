@@ -1,0 +1,87 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">图书详情</view>
+
+  <view class="book_detail_view"> 
+      <view class="viewItem">
+        <view class="label">图书条形码：</view>
+        <view class="content">
+          <view>{{barcode}}</view> 
+        </view>
+      </view>
+
+      <view class="viewItem">
+        <view class="label">图书名称：</view>
+        <view class="content">
+          <view>{{bookName}}</view>
+        </view>
+      </view>
+ 
+
+      <view class="viewItem">
+        <view class="label">图书分类：</view>
+        <view class="content">
+          <view>{{bookTypeObj}}</view>
+        </view>
+      </view>
+
+      <view class="viewItem">
+        <view class="label">图书价格：</view>
+        <view class="content">
+          <view>{{price}}</view>
+        </view>
+      </view>
+ 
+
+      <view class="viewItem">
+        <view class="label">图书库存：</view>
+        <view class="content">
+          <view>{{count}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">出版日期：</view>
+        <view class="content">
+          <view>{{publishDate}}</view>
+        </view>
+      </view>
+
+      <view class="viewItem">
+        <view class="label">出版社：</view>
+        <view class="content">
+          <view>{{publish}}</view>
+        </view>
+      </view>
+
+       <view class="viewItem">
+        <view class="label">图书图片：</view>
+        <view class="content"> 
+          <image mode="aspectFill" src="{{bookPhotoUrl}}"></image>
+        </view>
+      </view>
+
+      <view class="viewItem" style="align-items:flex-start;">
+        <view class="label">图书简介：</view>
+        <view class="content">
+          <view>{{bookDesc}}</view> 
+        </view>
+      </view>
+
+      <view class="viewItem">
+        <view class="label">图书文件：</view>
+        <view class="content"> 
+          <view class="fileView" data-bookFile="{{bookFile}}" catchtap="download_bookfile">{{bookFileName}}</view> 
+        </view>
+      </view>
+      
+
+      <view>
+        <navigator class="btnReturn" open-type="navigateBack" hover-class="navigator-hover">返回</navigator>
+      </view>
+ 
+  </view>
+
+</view>

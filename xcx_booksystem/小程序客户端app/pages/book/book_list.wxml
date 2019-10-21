@@ -1,0 +1,87 @@
+<view class="container">
+  <view class="toggleQview" bindtap="toggleQueryViewHide" style="padding:5px;">显示或隐藏查询视图</view>
+  <view class="queryView" hidden="{{queryViewHidden}}">
+    <view class="queryParams">
+      <view class="queryItem">
+        <view class="label">条形码：</view>
+        <view class="searchControl"><input data-id="barcode" placeholder="请输入条形码关键字" value="{{barcode}}" bindinput="searchValueInput" /></view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">图书名称：</view>
+        <view class="searchControl"><input data-id="bookName" placeholder="请输入图书名称关键字" value="{{bookName}}" bindinput="searchValueInput" /></view>
+      </view>
+
+      <view class="queryItem">
+        <view class="label">图书分类：</view>
+        <view class="searchControl">
+          <picker bindchange="bind_bookTypeObj_change" value="{{bookTypeObj_Index}}" range-key="bookTypeName" range="{{bookTypes}}">
+            <view class="value" name="types">
+              <input style="width:75%;display:inline-block;float:left;" value="{{bookTypes[bookTypeObj_Index].bookTypeName}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+        </view>
+      </view>
+
+
+      <view class="queryItem">
+        <view class="label">出版日期：</view>
+         <view class="searchControl">
+          <picker mode="date" value="{{publishDate}}" start="1970-01-01" end="2030-01-01" bindchange="bind_publishDate_change" >
+            <view>
+              <input style="width:75%;display:inline-block;float:left;" placeholder="选择出版日期" value="{{publishDate}}"></input>
+              <text class="clearButton" catchtap="clear_pubishDate">x</text>
+            </view>
+          </picker> 
+        </view>
+        
+      </view>
+
+
+    </view>
+    
+
+    <view class="queryButton">
+       <button class="font_12 fl_r op-btn mr_10" bindtap="queryBook">查询</button>
+    </view>
+
+  </view>
+
+  <block wx:for-items="{{books}}" wx:key="{{index}}">
+  
+    <view class="bookList">
+        <view class="bookImg">
+          <image src="{{item.bookPhotoUrl}}"></image>
+        </view>
+        <navigator url="book_detail?barcode={{item.barcode}}" hover-class="navigator-hover">
+        <view class="bookText">
+          <view>图书条形码：{{item.barcode}}</view>
+          <view>图书名称：{{item.bookName}}</view>
+          <view>图书分类：{{item.bookTypeObj.bookTypeName}}</view>
+          <view>图书价格：{{item.price}}</view>
+          <view>出版日期：{{item.publishDate}}</view>  
+        </view>
+        </navigator>
+    </view>
+    <view class="opt_view">
+      <button class="font_12 fl_r del-btn mr_10" bindtap="removeBook" data-barcode="{{item.barcode}}">删除</button> 
+      <navigator url="book_modify?barcode={{item.barcode}}" hover-class="navigator-hover">
+        <button class="font_12 fl_r op-btn mr_10">编辑</button>
+      </navigator>
+    </view>
+   
+  </block>
+
+
+  
+  <view hidden="{{loading_hide}}" class="loading">
+  <view class="loadingImg"><image src="/images/loading.gif" mode="aspectFill"></image></view>
+    <view class="loadingTxt">..加载中..</view>
+  </view>
+
+  <view class="nodata_view" hidden="{{nodata_hide}}">
+    <image src="/images/Noline.png" mode="widthFix"></image>
+  </view>
+
+</view>

@@ -1,0 +1,104 @@
+<view class="container">
+  <loading hidden="{{loadingHide}}">
+    {{loadingText}}
+  </loading>
+  <view class="title">添加图书</view>
+
+  <view class="book_add_view">
+    <form bindsubmit="formSubmit">
+      <view class="formItem">
+        <view class="label">图书条形码：</view>
+        <view class="formControl">
+          <input type="text" name="book.barcode" placeholder="请输入条形码" value="{{barcode}}" />
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">图书名称：</view>
+        <view class="formControl">
+          <input type="text" name="book.bookName" placeholder="请输入图书名称" value="{{bookName}}" />
+        </view>
+      </view>
+ 
+
+      <view class="formItem">
+        <view class="label">图书分类：</view>
+        <view class="formControl">
+          <picker bindchange="bind_bookTypeObj_change" value="{{bookTypeObj_Index}}" range-key="bookTypeName" range="{{bookTypes}}">
+            <view style="display:flex;border:1px solid green;">
+              <input hidden="true" name="book.bookTypeObj.bookTypeId" value="{{bookTypes[bookTypeObj_Index].bookTypeId}}" />
+              <input style="width:90%;border:0px;" value="{{bookTypes[bookTypeObj_Index].bookTypeName}}"></input>
+              <image class="arrow-r" src="/images/arrow-r-0.png"></image>
+            </view>
+          </picker> 
+          
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">图书价格：</view>
+        <view class="formControl">
+          <input type="text" name="book.price" placeholder="请输入图书价格" value="{{price}}" />
+        </view>
+      </view>
+ 
+
+      <view class="formItem">
+        <view class="label">图书库存：</view>
+        <view class="formControl">
+          <input type="text" name="book.count" placeholder="请输入图书库存" value="{{count}}" />
+        </view>
+      </view>
+
+       <view class="formItem">
+        <view class="label">出版日期：</view>
+        <view class="formControl">
+          <picker mode="date"  start="1970-01-01" end="2030-01-01" value="{{publishDate}}" bindchange="bind_publishDate_change" >
+            <view style="display:flex;border:1px solid green;">
+              <input style="width:90%;border:0px;" name="book.publishDate" placeholder="选择出版日期"  value="{{publishDate}}"></input>
+              <text class="clearButton" catchtap="clear_pubishDate">x</text>
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">出版社：</view>
+        <view class="formControl">
+          <input type="text" name="book.publish" placeholder="请输入图书出版社" value="{{publish}}" />
+        </view>
+      </view>
+
+       <view class="formItem">
+        <view class="label">图书图片：</view>
+        <view class="formControl" bindtap="select_bookPhoto">
+          <input type="text" hidden="true" name="book.bookPhoto" value="{{bookPhoto}}" />
+          <image wx:for="{{bookPhotoList}}" class="uploadPic" mode="aspectFill" src="{{item}}" wx:key=""></image>
+          <image src="../../images/upic.png" class="uploadPic" mode="widthFix"></image>
+        </view>
+      </view>
+
+      <view class="formItem" style="align-items:flex-start;">
+        <view class="label">图书简介：</view>
+        <view class="formControl">
+           <textarea placeholder="请输入图书描述" maxlength="800" name="book.bookDesc" value="{{bookDesc}}" />
+        </view>
+      </view>
+
+      <view class="formItem">
+        <view class="label">图书文件：</view>
+        <view class="formControl" bindtap="select_bookFile">
+          <input type="text" hidden="true" name="book.bookFile" value="{{bookFile}}" />
+          <text class="upfileBtn">{{bookFileBtnText}}</text>
+        </view>
+      </view>
+      
+
+      <view>
+        <button class="vBtn_ok" formType="submit" disabled="{{disabled}}">提交发布</button>
+      </view>
+
+    </form>
+  </view>
+
+</view>

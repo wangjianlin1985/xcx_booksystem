@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="container">
+   <swiper indicator-dots="true" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true">
+        <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" width="100%"/>
+            </swiper-item>
+        </block>
+    </swiper>
+  
+  <!--
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+
+  <view class="title">最新出版图书</view>
+  <block wx:for-items="{{books}}" wx:key="{{index}}">
+  
+    <view class="bookList">
+        <view class="bookImg">
+          <image src="{{item.bookPhotoUrl}}"></image>
+        </view>
+        <navigator url="../book/book_detail?barcode={{item.barcode}}" hover-class="navigator-hover">
+        <view class="bookText">
+          <view>图书条形码：{{item.barcode}}</view>
+          <view>图书名称：{{item.bookName}}</view>
+          <view>图书分类：{{item.bookTypeObj.bookTypeName}}</view>
+          <view>图书价格：{{item.price}}</view>
+          <view>出版日期：{{item.publishDate}}</view>  
+        </view>
+        </navigator>
+    </view>
+    
+   
+  </block>
+
+  
+  <view hidden="{{loading_hide}}" class="loading">
+  <view class="loadingImg"><image src="/images/loading.gif" mode="aspectFill"></image></view>
+    <view class="loadingTxt">..加载中..</view>
+  </view>
+ 
+</view>
