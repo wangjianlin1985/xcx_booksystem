@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/system/user",
+    "pages/system/about",
+    "pages/system/lianx",
+    "pages/book/book_add",
+    "pages/book/book_detail",
+    "pages/book/book_list",
+    "pages/book/book_modify"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "小程序客户端",
+    "navigationBarBackgroundColor": "#00AC2C",
+    "backgroundColor": "#EEEEEE",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#b7b7b7",
+    "selectedColor": "#00AC2C",
+    "borderStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icons/icon_home.png",
+        "selectedIconPath": "images/icons/icon_home_selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/book/book_add",
+        "iconPath": "images/icons/icon_cate.png",
+        "selectedIconPath": "images/icons/icon_cate_selected.png",
+        "text": "发布图书"
+      },
+      {
+        "pagePath": "pages/book/book_list",
+        "iconPath": "images/icons/icon_cart.png",
+        "selectedIconPath": "images/icons/icon_cart_selected.png",
+        "text": "图书列表"
+      },
+      {
+        "pagePath": "pages/system/user",
+        "iconPath": "images/icons/icon_member.png",
+        "selectedIconPath": "images/icons/icon_member_selected.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
